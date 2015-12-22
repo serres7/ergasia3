@@ -1,5 +1,8 @@
 package classes;
 
-public class Customer {
+public class Customer 
+{
+	String id;
+	String name;
 
 }
