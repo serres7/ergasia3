@@ -9,6 +9,7 @@ public class Main
 
 	public static void main( String[] args ) 
 	{
+
 		Customer qq=new Customer("0001", "ΓΑΪΤΑΝΗΣ ΙΩΑΝΝΗΣ");
 		Customer q1=new Customer("0002", "ΑΘΑΝΑΣΙΟΣ ΔΗΜΗΤΡΙΑΔΗΣ");
 		ArrayList<Customer> b = new ArrayList<Customer>();
@@ -32,6 +33,9 @@ public class Main
 		b.add(qq);b.add(qq);
 		b.add(qq);b.add(qq);
 		MainFrame a = new MainFrame( b );
+
+		new LoginForm().setVisible(true);
+
 
 	}//Method main
 
