@@ -1,9 +1,10 @@
- package classes;
+ package gui;
  
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import classes.Customer;
 import gui.MainFrame;
 
 
