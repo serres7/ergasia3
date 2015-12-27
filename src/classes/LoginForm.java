@@ -1,6 +1,10 @@
  package classes;
  
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
+
+import gui.MainFrame;
 
 
 /**
@@ -163,8 +167,29 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         if ((this.txtUserName.getText().equals("admin"))& (this.txtPassword.getText().equals("admin"))){
-             
-       //         new MainView(this).setVisible(true); //ταυτοποίηση του admin
+        	Customer qq=new Customer("0001", "ΓΑΪΤΑΝΗΣ ΙΩΑΝΝΗΣ");
+    		Customer q1=new Customer("0002", "ΑΘΑΝΑΣΙΟΣ ΔΗΜΗΤΡΙΑΔΗΣ");
+    		ArrayList<Customer> b = new ArrayList<Customer>();
+    		b.add(qq);
+    		b.add(q1);
+    		b.add(qq);
+    		b.add(qq);b.add(qq);
+    		b.add(qq);b.add(qq);
+    		b.add(qq);b.add(qq);
+    		b.add(qq);b.add(qq);
+    		b.add(qq);b.add(qq);
+    		b.add(qq);b.add(qq);
+    		b.add(qq);b.add(qq);
+    		b.add(qq);b.add(qq);
+    		b.add(qq);
+    		
+    		b.add(qq);b.add(qq);
+    		b.add(qq);b.add(qq);
+    		b.add(qq);b.add(qq);
+    		b.add(qq);b.add(qq);
+    		b.add(qq);b.add(qq);
+    		b.add(qq);b.add(qq);
+        	MainFrame a = new MainFrame( b );
          
                dispose();
            }
