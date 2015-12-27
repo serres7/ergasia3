@@ -44,7 +44,7 @@ public class LoginForm extends javax.swing.JFrame {
         txtPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Super-Market V2");
+        setTitle("");
         setIconImages(null);
         setResizable(false);
 
