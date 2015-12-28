@@ -8,13 +8,13 @@ public class Customer
 	//Attributes
 	private String id;
 	private String name;
-	private List invoiceList;
+	private List<Invoice> invoiceList;
 	
 	public Customer( String id, String name )
 	{
 		this.id = id;
 		this.name = name;
-		this.invoiceList = new ArrayList();
+		this.invoiceList = new ArrayList<Invoice>();
 		
 	}//Contructor
 
