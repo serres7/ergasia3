@@ -19,7 +19,10 @@ public final class InvoiceList {
 	
 	private ArrayList<Invoice> invoices;
 	
-	private InvoiceList() {}
+	private InvoiceList() 
+	{
+		invoices = new ArrayList<Invoice>();
+	}
 	
 	public ArrayList<Invoice> getInvoicesList()
 	{
