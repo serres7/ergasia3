@@ -1,17 +1,19 @@
 package classes;
 
+import java.awt.Color;
+
 public class Invoice {
 	
 	private String id;
 	private String customerId;
 	private double amount;
-	private String state;
+	private State state;
 	
 	public Invoice(String theId, String theCustomer, double theAmount) {
 		id = theId;
 		customerId = theCustomer;
 		amount = theAmount;
-		state = "red";   // Unpaid
+		state = new NotPaid();   
 	}
 
 	public String getId() {
@@ -38,15 +40,15 @@ public class Invoice {
 		this.amount = amount;
 	}
 
-	public String getState() {
-		return state;
+	public Color getState() {
+		return state.getColor();
 	}
 
-	public void setState(String state) {
-		this.state = state;
-	}
+	//public void setState(String state) {
+	//	this.state = state;
+	//}
 	
 	public void updateState() {
-		state = "green";   // Paid
+		state = new Paid();
 	}
 }
