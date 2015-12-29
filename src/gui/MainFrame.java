@@ -29,6 +29,7 @@ public class MainFrame
 	private JTable invoiceTable;
 	private JPanel controlPanel;
 	private JButton newCustomer;
+	private JButton updateCustomer;
 	private ArrayList<Customer> customerList;
 	
 	public MainFrame( ArrayList<Customer> customerList )
@@ -93,8 +94,11 @@ public class MainFrame
 		this.controlPanel = new JPanel();
 		this.controlPanel.setPreferredSize( new Dimension( 700, 100 ) );
 		this.newCustomer = new JButton( "New Customer" );
+		this.updateCustomer = new JButton( "Update Customer" );
 		this.controlPanel.add( this.newCustomer );
+		this.controlPanel.add( this.updateCustomer );
 		this.newCustomer.addActionListener( new ButtonListener() );
+		this.updateCustomer.addActionListener( new UpdateCustomerListener() );
 		
 	}//initializeControlPanel
 	
@@ -103,6 +107,39 @@ public class MainFrame
         public void actionPerformed( ActionEvent e ) 
         {   
         	AddCustomer a = new AddCustomer( mainFrame, customerList );
+        	DefaultTableModel tableModel = (DefaultTableModel) customerTable.getModel();
+        	tableModel.setRowCount(0);
+        	int c=1;
+        	for( Customer x: customerList )
+			{
+        		
+        		
+				tableModel.addRow(new Object[] {c,x.getId(), x.getName()});
+				c++;
+			}
+        	
+        }//actionPerformed
+        
+    }//ButtonListener
+	
+	class UpdateCustomerListener implements ActionListener 
+	{
+        public void actionPerformed( ActionEvent e ) 
+        {   
+        	Customer selectedCustomer = null;
+        	int rowIndex = customerTable.getSelectedRow();
+        	String selectedId = (String) customerTable.getModel().getValueAt(rowIndex, 1 );
+        	for( Customer x: customerList )
+			{
+        		if( x.getId().equals( selectedId ) )
+				{
+        			selectedCustomer = x;
+        			break;
+	
+				}	
+			}
+        	 
+        	UpdateCustomer a = new UpdateCustomer( mainFrame, customerList, selectedCustomer );
         	DefaultTableModel tableModel = (DefaultTableModel) customerTable.getModel();
         	tableModel.setRowCount(0);
         	int c=1;

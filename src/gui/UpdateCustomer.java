@@ -17,7 +17,7 @@ import javax.swing.SpringLayout;
 
 import classes.Customer;
 
-public class AddCustomer 
+public class UpdateCustomer 
 {
 	private JDialog mainWindow;
 	private JPanel mainPanel;
@@ -29,11 +29,12 @@ public class AddCustomer
 	private JTextField txtName;
 	private ArrayList<Customer> customerList;
 				
-	public AddCustomer( Window owner, ArrayList<Customer> customerList )
+	public UpdateCustomer( Window owner, ArrayList<Customer> customerList, Customer selectedCustomer )
 	{	
 		this.customerList = customerList;
 		initializeComponents();
-		
+		txtId.setText(selectedCustomer.getId());
+		txtName.setText(selectedCustomer.getName());
 		//mainWindow
 		this.mainWindow = new JDialog( owner, "ΑΝΕΠΑΡΚΗ ΚΕΦΑΛΑΙΑ", Dialog.ModalityType.APPLICATION_MODAL );
 		this.mainWindow.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
@@ -120,7 +121,3 @@ public class AddCustomer
     }//ButtonListener
 
 }//Class
-
-	
-
-
