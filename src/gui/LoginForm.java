@@ -168,28 +168,18 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         if ((this.txtUserName.getText().equals("admin"))& (this.txtPassword.getText().equals("admin"))){
-        	Customer qq=new Customer("0001", "ΓΑΪΤΑΝΗΣ ΙΩΑΝΝΗΣ");
-    		Customer q1=new Customer("0002", "ΑΘΑΝΑΣΙΟΣ ΔΗΜΗΤΡΙΑΔΗΣ");
+        	Customer q1=new Customer("0001", "ΜΑΤΘΙΛΔΗ ΜΑΡΑΚΗ");
+    		Customer q2=new Customer("0002", "ΣΟΦΙΑ ΣΤΕΦΑΝΙΔΟΥ");
+    		Customer q3=new Customer("0003", "ΑΘΑΝΑΣΙΟΣ ΔΗΜΗΤΡΙΑΔΗΣ");
+    		Customer q4=new Customer("0004", "ΓΑΪΤΑΝΗΣ ΙΩΑΝΝΗΣ");
+    		Customer q5=new Customer("0005", "ΧΑΤΖΗΓΕΩΡΓΙΟΥ ΑΛΕΞΑΝΔΡΟΣ");
     		ArrayList<Customer> b = new ArrayList<Customer>();
-    		b.add(qq);
     		b.add(q1);
-    		b.add(qq);
-    		b.add(qq);b.add(qq);
-    		b.add(qq);b.add(qq);
-    		b.add(qq);b.add(qq);
-    		b.add(qq);b.add(qq);
-    		b.add(qq);b.add(qq);
-    		b.add(qq);b.add(qq);
-    		b.add(qq);b.add(qq);
-    		b.add(qq);b.add(qq);
-    		b.add(qq);
+    		b.add(q2);
+    		b.add(q3);
+    		b.add(q4);
+    		b.add(q5);
     		
-    		b.add(qq);b.add(qq);
-    		b.add(qq);b.add(qq);
-    		b.add(qq);b.add(qq);
-    		b.add(qq);b.add(qq);
-    		b.add(qq);b.add(qq);
-    		b.add(qq);b.add(qq);
         	MainFrame a = new MainFrame( b );
          
                dispose();

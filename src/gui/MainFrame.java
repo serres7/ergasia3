@@ -2,8 +2,11 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,6 +27,8 @@ public class MainFrame
 	private JTable customerTable;
 	private JPanel invoicePanel;
 	private JTable invoiceTable;
+	private JPanel controlPanel;
+	private JButton newCustomer;
 	private ArrayList<Customer> customerList;
 	
 	public MainFrame( ArrayList<Customer> customerList )
@@ -31,13 +36,17 @@ public class MainFrame
 		this.customerList = customerList;
 		
 		initializeCustomerTable();
+		initializeControlPanel();
 		
 		SpringLayout sp = new SpringLayout();
 		this.mainPanel = new JPanel( sp );
 		
-		sp.putConstraint(SpringLayout.WEST, this.customerPanel, 5,SpringLayout.WEST, this.mainPanel);
-		sp.putConstraint(SpringLayout.NORTH, this.customerPanel, 5,SpringLayout.NORTH, this.mainPanel);
-		this.mainPanel.add(this.customerPanel);
+		sp.putConstraint( SpringLayout.WEST, this.controlPanel, 5,SpringLayout.WEST, this.mainPanel );
+		sp.putConstraint( SpringLayout.NORTH, this.controlPanel, 5,SpringLayout.NORTH, this.mainPanel );
+		sp.putConstraint( SpringLayout.WEST, this.customerPanel, 0,SpringLayout.WEST, this.controlPanel );
+		sp.putConstraint( SpringLayout.NORTH, this.customerPanel, 5,SpringLayout.SOUTH, this.controlPanel );
+		this.mainPanel.add( this.controlPanel );
+		this.mainPanel.add( this.customerPanel );
 		
 		
 		//MainFrame
@@ -47,7 +56,8 @@ public class MainFrame
 		this.mainFrame.add( this.mainPanel );
 		this.mainFrame.pack();
 		this.mainFrame.setVisible( true );
-	}//Condtructor
+		
+	}//Constructor
 	
 	private void initializeCustomerTable()
 	{
@@ -69,13 +79,43 @@ public class MainFrame
 		
 		this.customerPanel = new JScrollPane(this.customerTable, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		this.customerTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		this.customerTable.getColumnModel().getColumn(0).setPreferredWidth(27);
+		this.customerTable.getColumnModel().getColumn(0).setPreferredWidth(33);
 		this.customerTable.getColumnModel().getColumn(1).setPreferredWidth(60);
 		this.customerTable.getColumnModel().getColumn(2).setPreferredWidth(190);
-		DefaultTableCellRenderer rightRenderer = (DefaultTableCellRenderer) this.customerTable.getDefaultRenderer(String.class);//                new DefaultTableCellRenderer();
+		DefaultTableCellRenderer rightRenderer = (DefaultTableCellRenderer) this.customerTable.getDefaultRenderer(String.class);
 		rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
 		this.customerPanel.setPreferredSize( new Dimension(300,700));
-	}
+		
+	}//initializeCustomerTable
 	
+	private void initializeControlPanel()
+	{				
+		this.controlPanel = new JPanel();
+		this.controlPanel.setPreferredSize( new Dimension( 700, 100 ) );
+		this.newCustomer = new JButton( "New Customer" );
+		this.controlPanel.add( this.newCustomer );
+		this.newCustomer.addActionListener( new ButtonListener() );
+		
+	}//initializeControlPanel
+	
+	class ButtonListener implements ActionListener 
+	{
+        public void actionPerformed( ActionEvent e ) 
+        {   
+        	AddCustomer a = new AddCustomer( mainFrame, customerList );
+        	DefaultTableModel tableModel = (DefaultTableModel) customerTable.getModel();
+        	tableModel.setRowCount(0);
+        	int c=1;
+        	for( Customer x: customerList )
+			{
+        		
+        		
+				tableModel.addRow(new Object[] {c,x.getId(), x.getName()});
+				c++;
+			}
+        	
+        }//actionPerformed
+        
+    }//ButtonListener
 
 }
