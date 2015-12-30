@@ -29,4 +29,8 @@ public final class InvoiceList {
 		return invoices;
 	}
 	
+	public void addInvoice( Invoice i)
+	{
+		this.invoices.add( i );
+	}
 }

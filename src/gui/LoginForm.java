@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 
 import classes.Customer;
 import classes.Invoice;
+import classes.InvoiceList;
 import gui.MainFrame;
 
 
@@ -178,6 +179,8 @@ public class LoginForm extends javax.swing.JFrame {
     		Customer q4 = new Customer( "0004", "ΓΑΪΤΑΝΗΣ ΙΩΑΝΝΗΣ" );
     		Customer q5 = new Customer( "0005", "ΧΑΤΖΗΓΕΩΡΓΙΟΥ ΑΛΕΞΑΝΔΡΟΣ" );
     		ArrayList<Customer> b = new ArrayList<Customer>();
+    		InvoiceList c = InvoiceList.getInstance();
+    		
     		b.add(q1);
     		b.add(q2);
     		b.add(q3);
@@ -192,8 +195,14 @@ public class LoginForm extends javax.swing.JFrame {
     		Invoice i6 = new Invoice( "402","0003",3860);
     		i6.updateState();
     		i1.updateState();
-    		    		
-        	MainFrame a = new MainFrame( b );
+    		c.getInvoicesList().add(i1);
+    		c.getInvoicesList().add(i2);
+    		c.getInvoicesList().add(i3);
+    		c.getInvoicesList().add(i4);
+    		c.getInvoicesList().add(i5);
+    		c.getInvoicesList().add(i6);
+    		
+        	MainFrame a = new MainFrame( b, c );
         	
                dispose();
            }

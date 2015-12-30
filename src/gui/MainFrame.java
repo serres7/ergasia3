@@ -16,6 +16,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 
 import classes.Customer;
+import classes.InvoiceList;
 
 
 public class MainFrame 
@@ -27,12 +28,14 @@ public class MainFrame
 	private JPanel controlPanel;
 	private JButton newCustomer;
 	private JButton updateCustomer;
+	private JButton insertInvoice;
 	private ArrayList<Customer> customerList;
+	private InvoiceList invoiceList;
 	
-	
-	public MainFrame( ArrayList<Customer> customerList )
+	public MainFrame( ArrayList<Customer> customerList, InvoiceList invoiceList )
 	{
 		this.customerList = customerList;
+		this.invoiceList = invoiceList;
 		
 		initializeCustomerTable();
 		initializeControlPanel();
@@ -94,10 +97,13 @@ public class MainFrame
 		this.controlPanel.setPreferredSize( new Dimension( 700, 100 ) );
 		this.newCustomer = new JButton( "New Customer" );
 		this.updateCustomer = new JButton( "Update Customer" );
+		this.insertInvoice = new JButton( "Insert Invoice" );
 		this.controlPanel.add( this.newCustomer );
 		this.controlPanel.add( this.updateCustomer );
+		this.controlPanel.add( this.insertInvoice );
 		this.newCustomer.addActionListener( new ButtonListener() );
 		this.updateCustomer.addActionListener( new UpdateCustomerListener() );
+		this.insertInvoice.addActionListener( new InsertInvoiceListener() );
 		this.controlPanel.setBorder( BorderFactory.createEtchedBorder( EtchedBorder.LOWERED ) );
 		
 	}//initializeControlPanel
@@ -160,7 +166,16 @@ public class MainFrame
     }//ButtonListener
 
 	
-	
+	class InsertInvoiceListener implements ActionListener 
+	{
+		public void actionPerformed( ActionEvent e ) 
+        {   
+			String id = (String) customerTable.getModel().getValueAt(customerTable.getSelectedRow(), 1);
+        	new InsertInvoice( mainFrame, invoiceList, id );
+        	        	
+        }//actionPerformed
+        
+    }//ButtonListener
 	
 	
 	class CustomerTableModel extends DefaultTableModel implements Serializable
