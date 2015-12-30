@@ -1,7 +1,6 @@
  package gui;
  
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.swing.JOptionPane;
 
@@ -13,7 +12,7 @@ import gui.MainFrame;
 
 /**
  *
- * @author GAITANIS-DIMITRIADIS-MARAKI-STEFANOPOULOU
+ * @author GAITANIS-DIMITRIADIS-MARAKI-STEFANIDOY
  */
 @SuppressWarnings("serial")
 public class LoginForm extends javax.swing.JFrame {
@@ -202,7 +201,7 @@ public class LoginForm extends javax.swing.JFrame {
     		c.getInvoicesList().add(i5);
     		c.getInvoicesList().add(i6);
     		
-        	MainFrame a = new MainFrame( b, c );
+        	new MainFrame( b, c );
         	
                dispose();
            }

@@ -39,7 +39,7 @@ public class UpdateCustomer
 		txtId.setText(selectedCustomer.getId());
 		txtName.setText(selectedCustomer.getName());
 		//mainWindow
-		this.mainWindow = new JDialog( owner, "ΑΝΕΠΑΡΚΗ ΚΕΦΑΛΑΙΑ", Dialog.ModalityType.APPLICATION_MODAL );
+		this.mainWindow = new JDialog( owner, "ΕΝΗΜΕΡΩΣΗ ΣΤΟΙΧΕΙΩΝ ΠΕΛΑΤΗ " + this.selectedCustomer.getId(), Dialog.ModalityType.APPLICATION_MODAL );
 		this.mainWindow.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 		this.mainWindow.setPreferredSize( new Dimension( 400,200 ) );
 		this.mainWindow.add( this.mainPanel );
