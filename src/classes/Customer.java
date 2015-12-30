@@ -1,38 +1,39 @@
 package classes;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Customer 
-{
-	//Attributes
+{	
 	private String id;
 	private String name;
-	private List<Invoice> invoiceList;
-	
+		
 	public Customer( String id, String name )
 	{
 		this.id = id;
 		this.name = name;
-		this.invoiceList = new ArrayList<Invoice>();
-		
-	}//Contructor
+				
+	}//Constructor
 
-	public String getId() {
+	public String getId() 
+	{
 		return id;
-	}
+		
+	}//getId
 
-	public void setId(String id) {
+	public void setId( String id ) 
+	{
 		this.id = id;
-	}
+		
+	}//setId
 
-	public String getName() {
+	public String getName() 
+	{
 		return name;
-	}
+		
+	}//getName
 
-	public void setName(String name) {
+	public void setName( String name ) 
+	{
 		this.name = name;
-	}
-
+		
+	}//setName
 	
-}
+}//Class Customer

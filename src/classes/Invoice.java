@@ -1,6 +1,5 @@
 package classes;
 
-import java.awt.Color;
 
 public class Invoice {
 	
@@ -40,8 +39,8 @@ public class Invoice {
 		this.amount = amount;
 	}
 
-	public Color getState() {
-		return state.getColor();
+	public State getState() {
+		return this.state;
 	}
 
 	//public void setState(String state) {

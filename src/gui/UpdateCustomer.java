@@ -28,10 +28,13 @@ public class UpdateCustomer
 	private JTextField txtId;
 	private JTextField txtName;
 	private ArrayList<Customer> customerList;
+	private Customer selectedCustomer;
 				
 	public UpdateCustomer( Window owner, ArrayList<Customer> customerList, Customer selectedCustomer )
 	{	
 		this.customerList = customerList;
+		this.selectedCustomer = selectedCustomer;
+		
 		initializeComponents();
 		txtId.setText(selectedCustomer.getId());
 		txtName.setText(selectedCustomer.getName());
@@ -107,17 +110,17 @@ public class UpdateCustomer
         {   
         	for( Customer customer: customerList )
         	{
-        		if( customer.getId().equals( txtId.getText() ) )
+        		if( ( customer.getId().equals( txtId.getText() ) ) && !( customer.getId().equals( selectedCustomer.getId() ) ) )
         		{
         			return;
         		}
         	}
-        	customerList.add( new Customer( txtId.getText(), txtName.getText() ) );
-        	
+        	selectedCustomer.setId(txtId.getText());
+        	selectedCustomer.setName(txtName.getText());
         	mainWindow.dispose();
         	
         }//actionPerformed
         
-    }//ButtonListener
+    }//ButtonOKListener
 
 }//Class
