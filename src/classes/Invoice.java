@@ -43,10 +43,6 @@ public class Invoice {
 		return this.state;
 	}
 
-	//public void setState(String state) {
-	//	this.state = state;
-	//}
-	
 	public void updateState() {
 		state = new Paid();
 	}

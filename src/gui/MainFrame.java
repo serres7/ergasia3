@@ -1,11 +1,13 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.Serializable;
 import java.util.ArrayList;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -37,6 +39,7 @@ public class MainFrame
 	private JButton newCustomer;
 	private JButton updateCustomer;
 	private JButton insertInvoice;
+	private JButton payInvoice;
 	private ArrayList<Customer> customerList;
 	private InvoiceList invoiceList;
 	
@@ -155,12 +158,15 @@ public class MainFrame
 		this.newCustomer = new JButton( "Εισαγωγή Πελάτη" );
 		this.updateCustomer = new JButton( "Ενημέρωση Πελάτη" );
 		this.insertInvoice = new JButton( "Εισαγωγή Τιμολογίου" );
+		this.payInvoice = new JButton( "Εξόφληση Τιμολογίου" );
 		this.controlPanel.add( this.newCustomer );
 		this.controlPanel.add( this.updateCustomer );
 		this.controlPanel.add( this.insertInvoice );
+		this.controlPanel.add( this.payInvoice );
 		this.newCustomer.addActionListener( new ButtonListener() );
 		this.updateCustomer.addActionListener( new UpdateCustomerListener() );
 		this.insertInvoice.addActionListener( new InsertInvoiceListener() );
+		this.payInvoice.addActionListener( new PayInvoiceListener() );
 		this.controlPanel.setBorder( BorderFactory.createEtchedBorder( EtchedBorder.LOWERED ) );
 		
 	}//initializeControlPanel
@@ -245,6 +251,47 @@ public class MainFrame
         	updateInvoiceTable( id );
         	        	
         }//actionPerformed
+        
+    }//ButtonListener
+	
+	class PayInvoiceListener implements ActionListener 
+	{
+		public void actionPerformed( ActionEvent e ) 
+        {   
+			int rowIndex = customerTable.getSelectedRow();
+			if( rowIndex == -1 )
+			{
+				return;
+			}
+			String customerId = (String) customerTable.getModel().getValueAt( rowIndex, 1);
+
+			Invoice selectedInvoice = null;
+        	int rowIndex2 = invoiceTable.getSelectedRow();
+        	if( rowIndex2 == -1 )
+        	{
+        		return;
+        	}
+        	String selectedId = (String) invoiceTable.getModel().getValueAt( rowIndex2, 1 );
+        	
+        	for( Invoice x: invoiceList.getInvoicesList() )
+			{
+        		if( x.getId().equals( selectedId ) )
+				{
+        			selectedInvoice = x;
+        			break;
+	
+				}//if
+        		
+			}//for
+			
+        	if ( selectedInvoice.getState().getColor().equals(Color.red) )  // Unpaid
+			{
+        		new PayInvoice( mainFrame, invoiceList, customerId, selectedInvoice );
+            	updateInvoiceTable( selectedInvoice.getCustomerId() );
+				return;
+			}
+        	
+         }//actionPerformed
         
     }//ButtonListener
 	
