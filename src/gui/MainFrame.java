@@ -154,7 +154,7 @@ public class MainFrame
 	private void initializeControlPanel()
 	{				
 		this.controlPanel = new JPanel();
-		this.controlPanel.setPreferredSize( new Dimension( 700, 50 ) );
+		this.controlPanel.setPreferredSize( new Dimension( 800, 50 ) );
 		this.newCustomer = new JButton( "Εισαγωγή Πελάτη" );
 		this.updateCustomer = new JButton( "Ενημέρωση Πελάτη" );
 		this.insertInvoice = new JButton( "Εισαγωγή Τιμολογίου" );
