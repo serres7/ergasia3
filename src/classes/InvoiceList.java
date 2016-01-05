@@ -9,8 +9,11 @@ public final class InvoiceList {
 	
 	public static InvoiceList getInstance()
 	{
+            synchronized(InvoiceList.class){  //OCPrinciple for multithreading environment
 		if (instance == null) {
+                    
 			instance = new InvoiceList();
+                    }
 		}
 		
 		return instance;

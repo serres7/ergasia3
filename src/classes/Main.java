@@ -10,5 +10,5 @@ public class Main
 		new LoginForm().setVisible(true);
 
 	}//Method main
-
+//
 }//Class Main
